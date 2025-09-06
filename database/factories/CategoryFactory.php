@@ -16,9 +16,14 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $kategorien = [
+            'IT', 'Verwaltung', 'Produktion', 'Beratung', 'Buchhaltung', 
+            'Vertrib', 'Verkauf', 'Marketing', 'Bauwesen', 'Administration',
+            'Logistik', 'Ingenieurwesen', 'Gastronomie', 'Soziales', 'Immobilien'
+        ];
+
         return [
-//        'catName' => $this->faker->safeCatName(),
-        'catName' => $this->faker->word(),
+            'catName' => $this->faker->randomElement($kategorien),
         ];
     }
 }
