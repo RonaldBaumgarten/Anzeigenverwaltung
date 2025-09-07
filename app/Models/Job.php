@@ -10,8 +10,5 @@ class Job extends Model
     /** @use HasFactory<\Database\Factories\JobFactory> */
     use HasFactory;
 
-    protected $fillable = ['title'];
-    protected $fillable = ['description'];
-    protected $fillable = ['requiredSkills'];
-    protected $fillable = ['contact'];
+    protected $fillable = ['title','description','requiredSkills','user_id'];
 }

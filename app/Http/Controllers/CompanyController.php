@@ -13,7 +13,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::all();
+        return view('companies.index', compact('companies'));
     }
 
     /**
@@ -21,7 +22,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
@@ -29,15 +30,23 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request)
     {
-        //
+        $request->validate([
+            'companyName' => 'required|string|max:255',
+            'about' => 'required|string',
+        ]);
+
+        Company::create($request->all());
+
+        return redirect()->route('companys.index'->with('success', 'Company was created!'));
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Company $company)
     {
-        //
+        return view('companies.detail', compact('company'));
     }
 
     /**
@@ -45,7 +54,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return view('companies.edit', compact('company'));
     }
 
     /**
@@ -53,7 +62,13 @@ class CompanyController extends Controller
      */
     public function update(UpdateCompanyRequest $request, Company $company)
     {
-        //
+        $request->validate([
+            'catName' => 'required|string|max:255',
+        ]);
+
+        $company->update($request->all());
+
+        return redirect()->route('companies.index')->with('success', 'Company updated!');
     }
 
     /**
@@ -61,6 +76,7 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+        return redirect()->route('companies.index')->with('success', 'Company was deleted!');
     }
 }

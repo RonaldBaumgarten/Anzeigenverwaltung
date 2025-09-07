@@ -1,11 +1,13 @@
 <x-layout>
     <x-slot:heading>
-        Kategorien
+        Categories Page
     </x-slot:heading>
 
     <x-slot:items>
-        <a href="{{ route('categories.create') }}">Neue Kategorie anlegen</a>
         <ul>
+            <li>
+                erstes Listitem
+            </li>
             @foreach($categories as $category)
                 <li>
                     {{ $category->catName }} - ist der catName
@@ -20,4 +22,5 @@
         </ul>
     </x-slot:items>
 
+    <div>Hello from CATEGORY Page</div>
 </x-layout>

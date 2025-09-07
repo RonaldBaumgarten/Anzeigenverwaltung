@@ -10,7 +10,10 @@ class Company extends Model
     /** @use HasFactory<\Database\Factories\CompanyFactory> */
     use HasFactory;
 
-    protected $fillable = ['companyName'];
-    protected $fillable = ['about'];
-    protected $fillable = ['admin'];
+    protected $fillable = ['companyName', 'about', 'user_id'];
+        
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

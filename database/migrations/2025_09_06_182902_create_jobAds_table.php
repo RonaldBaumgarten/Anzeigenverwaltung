@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('company_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->text('description');
+            $table->text('requiredSkills');
             $table->timestamps();
         });
     }

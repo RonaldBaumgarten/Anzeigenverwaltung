@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Models\Job;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\JobController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,6 +14,11 @@ Route::get('/', function () {
 
 Route::resource('categories', CategoryController::class);
 
+Route::resource('companies', CompanyController::class);
+
+Route::resource('jobs', JobController::class);
+
+/*
 Route::get('/company', function () {
     return view('company');
     })->name('companies');
@@ -27,6 +34,8 @@ Route::get('/job/{id}', function ($id) {
 
     return view('job', ['job' => $job]);
 })->name('job-detail');
+
+ */
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

@@ -24,9 +24,9 @@
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"> 
                         <li><x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link></li>
                         <li><x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link></li>
-                        <li><x-nav-link href="/company" :active="request()->is('company')">Companies</x-nav-link></li>
-                        <li><x-nav-link href="/company" :active="request()->is('user')">Users</x-nav-link></li>
+                        <li><x-nav-link href="/companies" :active="request()->is('companies')">Companies</x-nav-link></li>
                         <li><x-nav-link href="/categories" :active="request()->is('categories')">Categories</x-nav-link></li>
+                        <li><x-nav-link href="/users" :active="request()->is('users')">Users</x-nav-link></li>
                     </ul> 
                     <div class="dropdown text-end"> 
                         <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"> </a> 

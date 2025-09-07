@@ -17,7 +17,9 @@ class CompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'companyName' => $this->faker->word(),
+            'about' => $this->faker->text(),
+            'admin' => $this->faker->firstNameFemale(),
         ];
     }
 }

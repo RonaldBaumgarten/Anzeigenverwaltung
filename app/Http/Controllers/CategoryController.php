@@ -36,7 +36,7 @@ class CategoryController extends Controller
 
         Category::create($request->all());
 
-        return redirect()->route('autos.index'->with('success', 'Category was created!'));
+        return redirect()->route('categories.index'->with('success', 'Category was created!'));
     }
 
     /**

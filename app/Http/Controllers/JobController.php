@@ -13,7 +13,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        //
+        $jobs = Job::all();
+        return view('jobs.index', compact('jobs'));
     }
 
     /**
@@ -21,7 +22,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+        return view('jobs.create');
     }
 
     /**
@@ -29,8 +30,15 @@ class JobController extends Controller
      */
     public function store(StoreJobRequest $request)
     {
-        //
+        $request->validate([
+//            'catName' => 'required|string|max:255',
+        ]);
+
+        Job::create($request->all());
+
+        return redirect()->route('autos.index'->with('success', 'Job was created!'));
     }
+
 
     /**
      * Display the specified resource.
@@ -45,7 +53,7 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
-        //
+        return view('jobs.edit', compact('job'));
     }
 
     /**
@@ -53,7 +61,13 @@ class JobController extends Controller
      */
     public function update(UpdateJobRequest $request, Job $job)
     {
-        //
+        $request->validate([
+            'catName' => 'required|string|max:255',
+        ]);
+
+        $job->update($request->all());
+
+        return redirect()->route('jobs.index')->with('success', 'Job updated!');
     }
 
     /**
@@ -61,6 +75,7 @@ class JobController extends Controller
      */
     public function destroy(Job $job)
     {
-        //
+        $job->delete();
+        return redirect()->route('jobs.index')->with('success', 'Job was deleted!');
     }
 }
