@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Company>
@@ -19,7 +20,7 @@ class CompanyFactory extends Factory
         return [
             'companyName' => $this->faker->word(),
             'about' => $this->faker->text(),
-            'admin' => $this->faker->firstNameFemale(),
+            'user_id' => User::factory(),
         ];
     }
 }

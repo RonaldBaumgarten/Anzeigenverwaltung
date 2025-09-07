@@ -35,7 +35,8 @@ class CompanyController extends Controller
             'about' => 'required|string',
         ]);
 
-        Company::create($request->all());
+        //    Company::create($request->all());
+        $request->user()->companies()->create($request->all());
 
         return redirect()->route('companys.index'->with('success', 'Company was created!'));
     }

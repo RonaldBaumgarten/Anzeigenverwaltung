@@ -1,6 +1,7 @@
-<h1>Neue Kategorie</h1>
-<form action="{{ route('categories.store') }}" method="POST">
+<h1>Neue Firma</h1>
+<form action="{{ route('companies.store') }}" method="POST">
     @csrf
-    Farbe: <input type="text" name="catName"><br>
+    Name der Firma: <input type="text" name="companyName"><br>
+    Beschreibung der Firma: <input type="text" name="about"><br>
     <button type="submit">Speichern</button>
 </form>

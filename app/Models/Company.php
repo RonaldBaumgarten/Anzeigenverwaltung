@@ -16,4 +16,14 @@ class Company extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function getAdminAttribute()
+    {
+        return $this->attributes['user_id'];
+    }
+
+    public function setAdminAttribute($value)
+    {
+        $this->attributes['user_id'] = $value;
+    }
 }

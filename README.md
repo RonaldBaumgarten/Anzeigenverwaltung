@@ -8,7 +8,16 @@ Clone the project, change into the project's root-directory and run the followin
 composer update
 npm install
 npm run build
+```
+
+# Now, create sample data:
+```
+php artisan db:seed
+```
+
+# Run the App:
+```
 compser run dev
 ```
 
-Now, visit [localhost:8000](localhost:8000) in your browser!
+Finally, visit [localhost:8000](localhost:8000) in your browser!
