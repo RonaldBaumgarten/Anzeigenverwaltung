@@ -13,7 +13,7 @@
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
     </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+    <body class="bg-[#FDFDFC] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
         <header class="p-3 mb-3 border-bottom"> 
             <div class="container"> 
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"> 
@@ -27,6 +27,9 @@
                         <li><x-nav-link href="/companies" :active="request()->is('companies')">Companies</x-nav-link></li>
                         <li><x-nav-link href="/categories" :active="request()->is('categories')">Categories</x-nav-link></li>
                         <li><x-nav-link href="/users" :active="request()->is('users')">Users</x-nav-link></li>
+                        <li><x-nav-link href="/register" :active="request()->is('/register')">Registrierung</x-nav-link></li>
+                        <li><x-nav-link href="/login" :active="request()->is('/login')">Login</x-nav-link></li>
+                        <li><x-nav-link href="/logout" :active="request()->is('/logout')">Logout</x-nav-link></li>
                     </ul> 
                     <div class="dropdown text-end"> 
                         <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"> </a> 

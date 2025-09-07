@@ -4,16 +4,16 @@
     </x-slot:heading>
 
     <x-slot:items>
-        <a href="{{ route('categories.create') }}">Neue Kategorie anlegen</a>
-        <ul>
+        <p><a href="{{ route('categories.create') }}" class="btn btn-primary">Neue Kategorie anlegen</a></p>
+        <ul class="list-group list-group-hover">
             @foreach($categories as $category)
-                <li>
-                    {{ $category->catName }} - ist der catName
-                    <a href="{{ route('categories.edit', $category) }}">Bearbeiten</a>
+                <li class="list-group-item">
+                    <strong>{{ $category->catName }}<strong>
+                    <a href="{{ route('categories.edit', $category) }}" class="btn btn-outline-primary">Bearbeiten</a>
                     <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Löschen</button>
+                        <button type="submit" class="btn btn-outline-warning">Löschen</button>
                     </form>
                 </li>
             @endforeach
