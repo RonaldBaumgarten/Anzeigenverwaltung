@@ -6,12 +6,18 @@
 
 
     <x-slot:items>
+        @if (Auth::user())
         <p><a href="{{ route('categories.create') }}" class="btn btn-primary">Neue Kategorie anlegen</a></p>
+        @else
+        <p><a href="{{ route('login') }}" class="btn btn-secondary">Einloggen, um neue Kategorie anzulegen</a></p>
+        @endif
         <ul class="list-group list-group-hover">
             @foreach($categories as $category)
                 <li class="list-group-item">
                     <strong>{{ $category->catName }}<strong>
+                    <!--
                     <a href="{{ route('categories.edit', $category) }}" class="btn btn-outline-primary">Bearbeiten</a>
+                    --> 
                     <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')

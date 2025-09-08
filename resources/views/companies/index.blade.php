@@ -5,7 +5,11 @@
     </x-slot:heading>
 
     <x-slot:items>
+        @if (Auth::user())
         <p><a href="{{ route('companies.create') }}" class="btn btn-primary">Neue Firma anlegen</a></p>
+        @else
+        <p><a href="{{ route('login') }}" class="btn btn-secondary">Einloggen, um neue Firma anzulegen</a></p>
+        @endif
         <ul class="list-group list-group-hover">
             @foreach($companies as $company)
                 <li class="list-group-item">

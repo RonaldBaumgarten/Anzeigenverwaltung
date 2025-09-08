@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\Category;
+use App\Models\Company;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
 use Illuminate\Support\Facades\Gate;
@@ -24,10 +26,13 @@ class JobController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
+        $companies = Company::all();
+
         if (Auth::guest()) {
             return redirect('/login');
         }
-        return view('jobs.create');
+        return view('jobs.create', compact('categories', 'companies'));
     }
 
     /**
@@ -39,9 +44,11 @@ class JobController extends Controller
 //            'catName' => 'required|string|max:255',
         ]);
 
-        Job::create($request->all());
+        // Job::create($request->all());
+        //
+        $request->user()->jobs()->create($request->all());
 
-        return redirect()->route('autos.index'->with('success', 'Job was created!'));
+        return redirect()->route('jobs.index')->with('success', 'Job was created!');
     }
 
 
@@ -58,12 +65,15 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
+        $categories = Category::all();
+        $companies = Company::all();
+
         // next 3 lines work but should better be handled by policy:
         if($job->user->isNot(Auth::user())) {
             abort(403);
         }
 
-        return view('jobs.edit', compact('job'));
+        return view('jobs.edit', compact('job', 'categories', 'companies'));
     }
 
     /**
@@ -72,7 +82,7 @@ class JobController extends Controller
     public function update(UpdateJobRequest $request, Job $job)
     {
         $request->validate([
-            'catName' => 'required|string|max:255',
+            //'catName' => 'required|string|max:255',
         ]);
 
         $job->update($request->all());

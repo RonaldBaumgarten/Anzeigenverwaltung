@@ -36,9 +36,10 @@ class CompanyController extends Controller
         ]);
 
         //    Company::create($request->all());
+        //
         $request->user()->companies()->create($request->all());
 
-        return redirect()->route('companys.index'->with('success', 'Company was created!'));
+        return redirect()->route('companies.index')->with('success', 'Company was created!');
     }
 
 
@@ -64,7 +65,7 @@ class CompanyController extends Controller
     public function update(UpdateCompanyRequest $request, Company $company)
     {
         $request->validate([
-            'catName' => 'required|string|max:255',
+            //'catName' => 'required|string|max:255',
         ]);
 
         $company->update($request->all());
