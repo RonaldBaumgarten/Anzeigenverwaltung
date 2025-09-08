@@ -18,7 +18,7 @@ class CompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            'companyName' => $this->faker->word(),
+            'companyName' => $this->faker->company(),
             'about' => $this->faker->text(),
             'user_id' => User::factory(),
         ];

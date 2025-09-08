@@ -1,4 +1,5 @@
-<x-layout>
+<x-index>
+
     <x-slot:heading>
         Firmen
     </x-slot:heading>
@@ -9,6 +10,7 @@
             @foreach($companies as $company)
                 <li class="list-group-item">
                         <strong>{{ $company->companyName }}</strong>
+                        <a href="{{ route('companies.show', $company) }}" class="btn btn-outline-primary">Details ansehen</a>
                         <a href="{{ route('companies.edit', $company) }}" class="btn btn-outline-primary">Bearbeiten</a>
                     <form action="{{ route('companies.destroy', $company) }}" method="POST" style="display:inline;">
                         @csrf
@@ -22,4 +24,4 @@
         </ul>
     </x-slot:items>
 
-</x-layout>
+</x-index>

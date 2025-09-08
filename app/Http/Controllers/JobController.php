@@ -50,7 +50,7 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        //
+        return view('jobs.detail', compact('job'));
     }
 
     /**

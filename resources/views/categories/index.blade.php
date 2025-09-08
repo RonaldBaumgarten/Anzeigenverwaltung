@@ -1,4 +1,5 @@
-<x-layout>
+<x-index>
+
     <x-slot:heading>
         Kategorien
     </x-slot:heading>
@@ -21,4 +22,4 @@
         </ul>
     </x-slot:items>
 
-</x-layout>
+</x-index>

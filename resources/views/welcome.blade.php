@@ -5,7 +5,4 @@
 
     <p>Klicke oben in der Navigationsleiste auf "Jobs" um dir offene Stellen anzeigen zu lassen.</p>
     <p>Falls du selber Stellenanzeigen verwalten möchtest, registriere dich oder logge dich ein, falls du schon einen Account hast.</p>
-
-    <x-slot:items>
-    </x-slot:items>
 </x-layout>

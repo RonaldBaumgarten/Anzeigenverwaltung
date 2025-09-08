@@ -65,7 +65,6 @@
                 </div>
             </div>
             {{ $slot }}
-            {{ $items }}
         </div>
     </body>
 </html>

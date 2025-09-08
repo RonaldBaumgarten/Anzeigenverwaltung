@@ -1,4 +1,5 @@
-<x-layout>
+<x-index>
+
     <x-slot:heading>
         Stellenanzeigen
     </x-slot:heading>
@@ -9,6 +10,7 @@
             @foreach($jobs as $job)
                 <li class="list-group-item">
                     <strong>{{ $job->title }}</strong>
+                    <a href="{{ route('jobs.show', $job) }}" class="btn btn-outline-primary">Details ansehen</a>
                     <a href="{{ route('jobs.edit', $job) }}" class="btn btn-outline-primary">Bearbeiten</a>
                     <form action="{{ route('jobs.destroy', $job) }}" method="POST" style="display:inline;">
                         @csrf
@@ -20,4 +22,4 @@
         </ul>
     </x-slot:items>
 
-</x-layout>
+</x-index>

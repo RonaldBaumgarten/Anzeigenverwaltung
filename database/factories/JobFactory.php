@@ -21,7 +21,7 @@ class JobFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->word(),
+            'title' => $this->faker->jobTitle(),
             'company_id' => Company::factory(),
             'category_id' => Category::factory(),
             'description' => $this->faker->text(),
