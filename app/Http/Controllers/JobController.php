@@ -41,11 +41,8 @@ class JobController extends Controller
     public function store(StoreJobRequest $request)
     {
         $request->validate([
-//            'catName' => 'required|string|max:255',
         ]);
 
-        // Job::create($request->all());
-        //
         $request->user()->jobs()->create($request->all());
 
         return redirect()->route('jobs.index')->with('success', 'Job was created!');
@@ -68,8 +65,7 @@ class JobController extends Controller
         $categories = Category::all();
         $companies = Company::all();
 
-        // next 3 lines work but should better be handled by policy:
-        if($job->user->isNot(Auth::user())) {
+        if(Auth::user()->cannot('update', $job)) {
             abort(403);
         }
 
@@ -82,7 +78,6 @@ class JobController extends Controller
     public function update(UpdateJobRequest $request, Job $job)
     {
         $request->validate([
-            //'catName' => 'required|string|max:255',
         ]);
 
         $job->update($request->all());
@@ -95,14 +90,10 @@ class JobController extends Controller
      */
     public function destroy(Job $job)
     {
-        Gate::authorize('destroy', $job);
-        /*
-        $user = Auth::user();
 
-        if ($user->can('destroy', $job)) {
-               abort(403, 'Unauthorized');
+        if(Auth::user()->cannot('delete', $job)) {
+            abort(403);
         }
-         */
 
         $job->delete();
         return redirect()->route('jobs.index')->with('success', 'Job was deleted!');

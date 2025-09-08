@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryPolicy
 {
@@ -29,7 +30,7 @@ class CategoryPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return Auth::user();
     }
 
     /**
@@ -37,6 +38,6 @@ class CategoryPolicy
      */
     public function delete(User $user, Category $category): bool
     {
-        return false;
+        return $user->id === $category->user_id;
     }
 }

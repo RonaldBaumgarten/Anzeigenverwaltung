@@ -9,7 +9,7 @@
         @if (Auth::user())
         <p><a href="{{ route('categories.create') }}" class="btn btn-primary">Neue Kategorie anlegen</a></p>
         @else
-        <p><a href="{{ route('login') }}" class="btn btn-secondary">Einloggen, um neue Kategorie anzulegen</a></p>
+        <p><a href="{{ route('login') }}" class="btn btn-info">Einloggen, um neue Kategorie anzulegen</a></p>
         @endif
         <ul class="list-group list-group-hover">
             @foreach($categories as $category)
@@ -18,11 +18,13 @@
                     <!--
                     <a href="{{ route('categories.edit', $category) }}" class="btn btn-outline-primary">Bearbeiten</a>
                     --> 
+                    @if (Auth::user())
                     <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-warning">Löschen</button>
                     </form>
+                    @endif
                 </li>
             @endforeach
         </ul>

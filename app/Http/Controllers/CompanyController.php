@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -35,13 +36,10 @@ class CompanyController extends Controller
             'about' => 'required|string',
         ]);
 
-        //    Company::create($request->all());
-        //
         $request->user()->companies()->create($request->all());
 
         return redirect()->route('companies.index')->with('success', 'Company was created!');
     }
-
 
     /**
      * Display the specified resource.
@@ -56,6 +54,10 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
+        if(Auth::user()->cannot('update', $company)) {
+            abort(403);
+        }
+
         return view('companies.edit', compact('company'));
     }
 
@@ -65,7 +67,6 @@ class CompanyController extends Controller
     public function update(UpdateCompanyRequest $request, Company $company)
     {
         $request->validate([
-            //'catName' => 'required|string|max:255',
         ]);
 
         $company->update($request->all());
@@ -78,6 +79,10 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
+        if(Auth::user()->cannot('delete', $company)) {
+            abort(403);
+        }
+
         $company->delete();
         return redirect()->route('companies.index')->with('success', 'Company was deleted!');
     }

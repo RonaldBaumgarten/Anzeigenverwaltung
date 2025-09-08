@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
@@ -18,12 +19,13 @@ class CategoryFactory extends Factory
     {
         $kategorien = [
             'IT', 'Verwaltung', 'Produktion', 'Beratung', 'Buchhaltung', 
-            'Vertrib', 'Verkauf', 'Marketing', 'Bauwesen', 'Administration',
+            'Vertrieb', 'Verkauf', 'Marketing', 'Bauwesen', 'Administration',
             'Logistik', 'Ingenieurwesen', 'Gastronomie', 'Soziales', 'Immobilien'
         ];
 
         return [
             'catName' => $this->faker->randomElement($kategorien),
+            'user_id' => User::factory(),
         ];
     }
 }

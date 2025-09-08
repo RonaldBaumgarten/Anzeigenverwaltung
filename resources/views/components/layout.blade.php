@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Anzeigenverwaltung</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
@@ -24,8 +24,8 @@
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"> 
                         <li><x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link></li>
                         <li><x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link></li>
-                        <li><x-nav-link href="/companies" :active="request()->is('companies')">Companies</x-nav-link></li>
-                        <li><x-nav-link href="/categories" :active="request()->is('categories')">Categories</x-nav-link></li>
+                        <li><x-nav-link href="/companies" :active="request()->is('companies')">Firmen</x-nav-link></li>
+                        <li><x-nav-link href="/categories" :active="request()->is('categories')">Kategorien</x-nav-link></li>
                     </ul> 
                     <div class="dropdown text-end"> 
                         

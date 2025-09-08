@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Job;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class JobPolicy
 {
@@ -21,7 +22,7 @@ class JobPolicy
      */
     public function view(User $user, Job $job): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +30,7 @@ class JobPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return Auth::user();
     }
 
     /**
@@ -37,7 +38,7 @@ class JobPolicy
      */
     public function update(User $user, Job $job): bool
     {
-        return false;
+        return $user->id === $job->user_id;
     }
 
     /**
@@ -45,7 +46,7 @@ class JobPolicy
      */
     public function delete(User $user, Job $job): bool
     {
-        return false;
+        return $user->id === $job->user_id;
     }
 
     /**

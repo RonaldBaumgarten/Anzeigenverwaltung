@@ -10,5 +10,12 @@ class Category extends Model
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
     use HasFactory;
 
-    protected $fillable = ['catName'];
+    protected $fillable = ['catName', 'user_id'];
+        
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
+    // protected $fillable = ['catName'];
 }

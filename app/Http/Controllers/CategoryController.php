@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -34,7 +35,8 @@ class CategoryController extends Controller
             'catName' => 'required|string|max:255',
         ]);
 
-        Category::create($request->all());
+        $request->user()->categories()->create($request->all());
+        //Category::create($request->all());
 
         return redirect()->route('categories.index')->with('success', 'Category was created!');
     }
@@ -52,6 +54,10 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        if(Auth::user()->cannot('update', $category)) {
+            abort(403);
+        }
+
         return view('categories.edit', compact('category'));
     }
 
@@ -74,6 +80,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        if(Auth::user()->cannot('delete', $category)) {
+            abort(403);
+        }
+
         $category->delete();
         return redirect()->route('categories.index')->with('success', 'Category was deleted!');
     }

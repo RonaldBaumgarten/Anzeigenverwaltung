@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyPolicy
 {
@@ -29,7 +30,7 @@ class CompanyPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return Auth::user();
     }
 
     /**
@@ -37,8 +38,7 @@ class CompanyPolicy
      */
     public function update(User $user, Company $company): bool
     {
-        //return $user->id === $company->user_id;
-        return true;
+        return $user->id === $company->user_id;
     }
 
     /**

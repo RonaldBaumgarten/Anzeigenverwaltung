@@ -1,4 +1,10 @@
-<h1>Neue Kategorie</h1>
+<x-layout>
+
+    <x-slot:heading>
+        <h1>Neuer Job</h1>
+    </x-slot:heading>
+
+    <x-slot>
 <form action="{{ route('jobs.store') }}" method="POST">
     @csrf
     Jobtitel: <input type="text" name="title"><br>
@@ -25,5 +31,7 @@
                 @endforeach
             </select><br>
 
-    <button type="submit">Speichern</button>
+    <button type="submit" class="btn btn-primary">Speichern</button>
 </form>
+    </x-slot>
+</x-layout>
