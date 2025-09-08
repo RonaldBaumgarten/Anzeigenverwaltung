@@ -3,6 +3,7 @@
         Kategorien
     </x-slot:heading>
 
+
     <x-slot:items>
         <p><a href="{{ route('categories.create') }}" class="btn btn-primary">Neue Kategorie anlegen</a></p>
         <ul class="list-group list-group-hover">

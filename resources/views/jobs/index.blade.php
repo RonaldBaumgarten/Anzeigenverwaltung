@@ -4,16 +4,16 @@
     </x-slot:heading>
 
     <x-slot:items>
-        <a href="{{ route('jobs.create') }}">Neue Anzeige anlegen</a>
-        <ul>
+        <p><a href="{{ route('jobs.create') }}" class="btn btn-primary">Neue Anzeige anlegen</a></p>
+        <ul class="list-group list-group-hover">
             @foreach($jobs as $job)
-                <li>
-                    {{ $job->title }} - ist der title
-                    <a href="{{ route('jobs.edit', $job) }}">Bearbeiten</a>
+                <li class="list-group-item">
+                    <strong>{{ $job->title }}</strong>
+                    <a href="{{ route('jobs.edit', $job) }}" class="btn btn-outline-primary">Bearbeiten</a>
                     <form action="{{ route('jobs.destroy', $job) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Löschen</button>
+                        <button type="submit" class="btn btn-outline-warning">Löschen</button>
                     </form>
                 </li>
             @endforeach

@@ -4,22 +4,21 @@
     </x-slot:heading>
 
     <x-slot:items>
-        <a href="{{ route('companies.create') }}">Neue Firma anlegen</a>
-        <ul>
-            <li>
-                erstes Listitem
-            </li>
+        <p><a href="{{ route('companies.create') }}" class="btn btn-primary">Neue Firma anlegen</a></p>
+        <ul class="list-group list-group-hover">
             @foreach($companies as $company)
-                <li>
-                    {{ $company->companyName }} - ist der companyName
-                    <a href="{{ route('companies.edit', $company) }}">Bearbeiten</a>
+                <li class="list-group-item">
+                        <strong>{{ $company->companyName }}</strong>
+                        <a href="{{ route('companies.edit', $company) }}" class="btn btn-outline-primary">Bearbeiten</a>
                     <form action="{{ route('companies.destroy', $company) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Löschen</button>
+                        <button type="submit" class="btn btn-outline-warning">Löschen</button>
                     </form>
                 </li>
             @endforeach
+
+
         </ul>
     </x-slot:items>
 

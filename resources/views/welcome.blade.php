@@ -1,9 +1,10 @@
 <x-layout>
     <x-slot:heading>
-        Willkommen bei der Stellenanzeigenverwaltung!
+        Willkommen bei der Stellenanzeigenverwaltung
     </x-slot:heading>
 
-    <div>If you want to create a new job ad, just click here: </div>
+    <p>Klicke oben in der Navigationsleiste auf "Jobs" um dir offene Stellen anzeigen zu lassen.</p>
+    <p>Falls du selber Stellenanzeigen verwalten möchtest, registriere dich oder logge dich ein, falls du schon einen Account hast.</p>
 
     <x-slot:items>
     </x-slot:items>

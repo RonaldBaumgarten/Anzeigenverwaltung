@@ -15,7 +15,9 @@ Route::get('/', function () {
 
 Route::resource('categories', CategoryController::class);
 
-Route::resource('companies', CompanyController::class);
+Route::resource('companies', CompanyController::class)
+    ;
+//    ->middleware('auth');
 
 Route::resource('jobs', JobController::class);
 

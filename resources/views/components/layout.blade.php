@@ -26,45 +26,46 @@
                         <li><x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link></li>
                         <li><x-nav-link href="/companies" :active="request()->is('companies')">Companies</x-nav-link></li>
                         <li><x-nav-link href="/categories" :active="request()->is('categories')">Categories</x-nav-link></li>
-                        <li><x-nav-link href="/users" :active="request()->is('users')">Users</x-nav-link></li>
-                        <li><x-nav-link href="/register" :active="request()->is('/register')">Registrierung</x-nav-link></li>
-                        <li><x-nav-link href="/login" :active="request()->is('/login')">Login</x-nav-link></li>
-                        <li><x-nav-link href="/logout" :active="request()->is('/logout')">Logout</x-nav-link></li>
                     </ul> 
                     <div class="dropdown text-end"> 
-                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"> </a> 
+                        
+                        @if (Auth::guest())
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"> 
+                            <li><x-nav-link href="/register" :active="request()->is('/register')">Registrierung</x-nav-link></li>
+                            <li><x-nav-link href="/login" :active="request()->is('/login')">Login</x-nav-link></li>
+                        </ul>
+                        @endif
+
+                        @if (Auth::user())
+                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">{{ Auth::user()->name }}</a> 
                         <ul class="dropdown-menu text-small"> 
-                            <li><a class="dropdown-item" href="#">New Job</a></li> 
-                            <li><a class="dropdown-item" href="#">New Company</a></li> 
-                            <li><a class="dropdown-item" href="#">New User</a></li> 
-                            <li><hr class="dropdown-divider"></li> 
-                            <li><a class="dropdown-item" href="#">Sign out</a></li> 
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <x-dropdown-link :href="route('logout')"
+                                            onclick="event.preventDefault();
+                                                        this.closest('form').submit();" class="dropdown-item">
+                                        {{ __('Log Out') }}
+                                    </x-dropdown-link>
+                                </form>
+                            </li>
                         </ul> 
+
+
+                        @endif
                     </div> 
                 </div> 
             </div> 
         </header>
         </nav>
-        <div class="container-xxl bd-gutter pt-md-1 pb-md-4"> 
+        <div class="container bd-gutter pt-md-1 pb-md-4"> 
             <div class="row"> 
                 <div class="col-xl-8"> 
                     <h1 class="bd-title mt-0">{{ $heading }}</h1> 
-                    <p class="bd-subtitle">Das ist der UNTERTITEL der Überschrift HEADING</p> 
                 </div>
             </div>
             {{ $slot }}
             {{ $items }}
         </div>
-        <!--
-        <div class="container-xxl bd-gutter pt-md-1 pb-md-4"> 
-            <div class="row"> 
-                <div class="col-xl-8"> 
-                    <h1 class="bd-title mt-0">{{ $items }}</h1> 
-                    <p class="bd-subtitle">Das ist der UNTERTITEL der Überschrift von ITEMS</p> 
-                </div>
-            </div>
-            {{ $slot }}
-        </div>
-        -->
     </body>
 </html>

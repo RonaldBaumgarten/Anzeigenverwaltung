@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -22,6 +24,9 @@ class JobController extends Controller
      */
     public function create()
     {
+        if (Auth::guest()) {
+            return redirect('/login');
+        }
         return view('jobs.create');
     }
 
@@ -53,6 +58,11 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
+        // next 3 lines work but should better be handled by policy:
+        if($job->user->isNot(Auth::user())) {
+            abort(403);
+        }
+
         return view('jobs.edit', compact('job'));
     }
 
@@ -75,6 +85,15 @@ class JobController extends Controller
      */
     public function destroy(Job $job)
     {
+        Gate::authorize('destroy', $job);
+        /*
+        $user = Auth::user();
+
+        if ($user->can('destroy', $job)) {
+               abort(403, 'Unauthorized');
+        }
+         */
+
         $job->delete();
         return redirect()->route('jobs.index')->with('success', 'Job was deleted!');
     }

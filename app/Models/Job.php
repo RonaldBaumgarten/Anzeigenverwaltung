@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Policies\JobPolicy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+#[UsePolicy(JobPolicy::class)]
 class Job extends Model
 {
     /** @use HasFactory<\Database\Factories\JobFactory> */
