@@ -41,6 +41,9 @@ class JobController extends Controller
     public function store(StoreJobRequest $request)
     {
         $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'requiredSkills' => 'required|string',
         ]);
 
         $request->user()->jobs()->create($request->all());
@@ -78,6 +81,9 @@ class JobController extends Controller
     public function update(UpdateJobRequest $request, Job $job)
     {
         $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'requiredSkills' => 'required|string',
         ]);
 
         $job->update($request->all());

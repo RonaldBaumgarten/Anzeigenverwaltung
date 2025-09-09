@@ -11,7 +11,7 @@
         <p><h4>Kategorie:</h4>{{ $job->category->catName }}</p>
         <p><h4>Kontakt:</h4>{{ $job->user->email }}</p>
 
-        @can('edit', $job)
+        @can('update', $job)
         <a href="{{ route('jobs.edit', $job) }}" class="btn btn-outline-primary">Bearbeiten</a>
         @else
         <div class="btn disabled">Bearbeiten</div>

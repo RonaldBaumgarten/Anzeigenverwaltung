@@ -67,6 +67,8 @@ class CompanyController extends Controller
     public function update(UpdateCompanyRequest $request, Company $company)
     {
         $request->validate([
+            'companyName' => 'required|string|max:255',
+            'about' => 'required|string',
         ]);
 
         $company->update($request->all());
