@@ -1,8 +1,13 @@
 <x-index>
 
-    <x-slot:heading>
+    <x-slot:modelname>
+        Jobs
+    </x-slot:modelname>
+
+    <x-slot:modelPlural>
         Stellenanzeigen
-    </x-slot:heading>
+    </x-slot:modePplural>
+
 
     <x-slot:items>
         @if (Auth::user())

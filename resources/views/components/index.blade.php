@@ -1,8 +1,13 @@
 <x-layout>
+
     <x-slot:heading>
-        {{ $heading }}
+        {{ $modelname }}
     </x-slot:heading>
 
-        {{ $items }}
+    <x-slot:leadtext>
+        Alle in unserer Datenbank gespeicherten  {{ $modelPlural }}
+    </x-slot:leadtext>
+
+    {{ $items }}
 
 </x-layout>

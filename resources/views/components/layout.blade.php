@@ -50,19 +50,17 @@
                                 </form>
                             </li>
                         </ul> 
-
-
                         @endif
                     </div> 
                 </div> 
             </div> 
         </header>
-        </nav>
-        <div class="container bd-gutter pt-md-1 pb-md-4"> 
-            <div class="row"> 
-                <div class="col-xl-8"> 
-                    <h1 class="bd-title mt-0">{{ $heading }}</h1> 
-                </div>
+        <div class="container my-5"> 
+            <div class="p-5 text-center bg-body-tertiary rounded-3"> 
+                <h1 class="text-body-emphasis">{{ $heading }}</h1> 
+                <p class="lead">
+                    {{ $leadtext }}
+                </p>
             </div>
             {{ $slot }}
         </div>

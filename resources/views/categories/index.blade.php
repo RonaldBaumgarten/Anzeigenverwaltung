@@ -1,9 +1,12 @@
 <x-index>
 
-    <x-slot:heading>
-        Kategorien
-    </x-slot:heading>
+    <x-slot:modelname>
+        Kategorie
+    </x-slot:modelname>
 
+    <x-slot:modelPlural>
+        Kategorien
+    </x-slot:modelPlural>
 
     <x-slot:items>
         @if (Auth::user())
